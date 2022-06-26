@@ -14,6 +14,10 @@
     const introTextArrayLastTextLastCharacterIndex = introTextArray[introTextArrayLastTextIndex].length - 1;
 
     const setText = setInterval(() => {
+        if (introText.slice(-1) === '|') {
+            introText = introText.slice(0, -1);
+        }
+
         if ((introTextArrayIndex === introTextArrayLastTextIndex) && (introTextArrayInnerIndex === introTextArrayLastTextLastCharacterIndex)) {
             introText += introTextArray[introTextArrayIndex][introTextArrayInnerIndex];
 
@@ -21,18 +25,18 @@
         } 
         
         else if (introTextArrayInnerIndex === introTextArray[introTextArrayIndex].length - 1) {
-            introText += introTextArray[introTextArrayIndex][introTextArrayInnerIndex] + ' ';
+            introText += introTextArray[introTextArrayIndex][introTextArrayInnerIndex] + ' |';
 
             introTextArrayInnerIndex = 0;
             introTextArrayIndex++;
         }
 
         else {
-            introText += introTextArray[introTextArrayIndex][introTextArrayInnerIndex];
+            introText += introTextArray[introTextArrayIndex][introTextArrayInnerIndex] + '|';
             
             introTextArrayInnerIndex++;
         }
-    }, 100);
+    }, 50);
 
 </script>
 
